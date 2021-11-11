@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/categoryFragment">
+
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.example.nekosanimegifs.view.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/goToGIFListFragment"
+            app:destination="@id/gifListFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/gifListFragment"
+        android:name="com.example.nekosanimegifs.view.GIFListFragment"
+        android:label="fragment_item_image"
+        tools:layout="@layout/fragment_gif_list" >
+        <argument
+            android:name="categoryName"
+            app:argType="string" />
+        <argument
+            android:name="categoryMax"
+            app:argType="integer"
+            android:defaultValue="1"/>
+        <action
+            android:id="@+id/goToFullScreenFragment"
+            app:destination="@id/fullScreenGIFFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fullScreenGIFFragment"
+        android:name="com.example.nekosanimegifs.view.FullScreenFragment"
+        android:label="fragment_item_image"
+        tools:layout="@layout/fragment_full_screen" >
+        <argument
+            android:name="gif"
+            app:argType="com.example.nekosanimegifs.models.Url" />
+        <action
+            android:id="@+id/goBack"
+            app:destination="@id/gifListFragment" />
+    </fragment>
+
+</navigation>
